@@ -1,0 +1,17 @@
+<% if @user.errors.any? %>
+  <div id="explanation">
+    <p>Error occurred.</p>
+  </div>
+  <% @user.errors.full_messages.each do |msg| %>
+   <p><%= msg %></p>
+  <% end %>
+<% end %>
+<%= form_with model: @user do |form| %>
+  <%= form.label :username %>
+  <%= form.text_field :username %>
+  <%= form.label :email, "Email:" %>
+  <%= form.text_field :email, placeholder: "example@123.com" %>
+  <%= form.label :password, "Password:" %>
+  <%= form.text_field :password %>
+  <%= form.submit "Submit" %>
+<% end %>
